@@ -53,4 +53,39 @@ document.addEventListener("DOMContentLoaded", function() {
         `;
         newsFeedDiv.appendChild(newsDiv);
     });
+
+    // Donation modal
+    const donateNowBtn = document.getElementById("donateNowBtn");
+    const donationModal = document.getElementById("donationModal");
+    const closeEls = donationModal ? donationModal.querySelectorAll("[data-close-modal]") : [];
+
+    let lastActiveEl = null;
+
+    function openDonationModal() {
+        if (!donationModal) return;
+        lastActiveEl = document.activeElement;
+        donationModal.classList.add("is-open");
+        donationModal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        const closeBtn = donationModal.querySelector(".modal__close");
+        if (closeBtn) closeBtn.focus();
+    }
+
+    function closeDonationModal() {
+        if (!donationModal) return;
+        donationModal.classList.remove("is-open");
+        donationModal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        if (lastActiveEl && typeof lastActiveEl.focus === "function") lastActiveEl.focus();
+    }
+
+    if (donateNowBtn) donateNowBtn.addEventListener("click", openDonationModal);
+
+    closeEls.forEach((el) => el.addEventListener("click", closeDonationModal));
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && donationModal && donationModal.classList.contains("is-open")) {
+            closeDonationModal();
+        }
+    });
 });
