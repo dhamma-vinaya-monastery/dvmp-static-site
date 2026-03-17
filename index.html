@@ -5,16 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Dhamma Vinaya Monastery Pune (DVMP) - a 10-acre Buddhist monastery in Agalambe near Khadakwasla, dedicated to preserving the Buddha’s original teachings of Dhamma and Vinaya.">
     <title>Dhamma Vinaya Monastery Pune</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data:; style-src 'self'; script-src 'self'; frame-src https://www.google.com; upgrade-insecure-requests">
+    <meta property="og:title" content="Dhamma Vinaya Monastery Pune">
+    <meta property="og:description" content="A 10-acre Buddhist monastery near Pune dedicated to preserving the Buddha’s original teachings of Dhamma and Vinaya.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dhamma-vinaya-monastery.github.io/dvmp-static-site/">
+    <meta property="og:image" content="https://dhamma-vinaya-monastery.github.io/dvmp-static-site/images/og.jpg">
+    <meta property="og:site_name" content="Dhamma Vinaya Monastery Pune">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dhamma Vinaya Monastery Pune">
+    <meta name="twitter:description" content="A 10-acre Buddhist monastery near Pune dedicated to preserving the Buddha’s original teachings of Dhamma and Vinaya.">
+    <meta name="twitter:image" content="https://dhamma-vinaya-monastery.github.io/dvmp-static-site/images/og.jpg">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
 <body>
+    <a class="skip-link" href="#home">Skip to content</a>
     <header>
         <nav>
             <div class="container">
                 <h1 class="logo"><a href="#">Dhamma Vinaya Monastery Pune</a></h1>
-                <ul class="nav-links">
+                <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation">
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                </button>
+                <ul class="nav-links" id="primary-navigation">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#architecture">Architecture</a></li>
@@ -35,7 +51,7 @@
     </section>
 
     <!-- Welcome section -->
-    <section id="Welcome" class="section-container">
+    <section id="welcome" class="section-container">
         <div class="container welcome-highlight-block">
             <h1>Dhamma Vinaya Monastery: A Path to Universal Peace and Liberation.</h1>
             <p>Welcome to Dhamma Vinaya Monastery Pune (DVMP), a 10-acre sanctuary in the serene landscapes of Agalambe near Khadakwasla. We are dedicated to preserving the Buddha’s original teachings—Dhamma (the Truth) and Vinaya (the Discipline).
@@ -56,8 +72,8 @@
             <h2>About Us</h2>
 			<p><strong>Our Mission:</strong> To provide a dedicated space for the study and practice of Buddhist monastic discipline and meditation. We believe that when Dhamma and Vinaya function together, they lead to total unbinding and release from suffering.</p>
             <p>The center has been developed by the <strong>Bahujan Hitay Samajik Bandhilki Sanstha (BHSBS) Pune</strong>, the result of years of dedication by its trustees. The first phase was inaugurated on the 2587th Buddha Jayanti (May 2023) by Thai Buddhist scholar Most Ven. Arayawangso Guruji.</p>
-			<strong>Programs & Activities:</strong>
-			<ul style="list-style-type: none;">
+			<p><strong>Programs & Activities:</strong></p>
+			<ul class="unstyled-list">
 				<li><strong>Mega Dhamma Courses:</strong> Enriching residential programs led by esteemed monks, such as Ven. Ananda Bhante ji (Mahabodhi Society, Bangalore)</li>
 				<li><strong>One-Day Retreats:</strong> Regular one-day Dhamma camps for local and visiting practitioners.</li>
 				<li><strong>Meditation Practice:</strong> Daily sessions focusing on Anapana and Vipassana for self-transformation and mental purification.</li>
@@ -69,20 +85,18 @@
     <!-- Architecture Section -->
     <section id="architecture" class="section-container">
         <div class="container">
-			<p>
-				<h2>Our Architecture</h2>
-				<ul style="list-style-type: none;">
-					<li><strong>The Grand Stupa:</strong> A replica of the Great Stupa at Sanchi, serving as a beacon of faith. Unlike the Sanchi Stupa, it is hollow inside and contains two spacious meditation halls (2,700 sq ft each)—a perfect space for reflection, contemplation, and meditation.</li>
-					<li><strong>Meditation & Uposatha Halls:</strong> Spacious halls designed for collective meditation and monastic ceremonies.</li>
-					<li><strong>Bhikkhu & Sadhaka Niwas:</strong> Secluded residential quarters for monks and practitioners to live and meditate in peace.</li>
-					<li><strong>Administrative Building:</strong> The hub for managing monastery activities and course registrations.</li>
-					<li><strong>Gypsy Vipassana Center:</strong> Part of the 10-acre complex nearing completion. It will have 108 rooms and three large halls. 10-day Vipassana meditation courses will be offered soon, along with skill development, women’s empowerment, and cadre development programs.</li>
-					<li><strong>Veluvan Meditation Park:</strong> A sacred forest meditation space is currently being developed. Spread across approximately 100 acres of natural landscape, the park draws inspiration from the ancient Veluvana tradition—the bamboo groves offered to the Buddha for meditation—and embodies a commitment to simplicity, harmony, and contemplative living. Initiated under the guidance of Most Venerable Arayawangso Guruji, the project began with the planting of a Bodhi tree and continues to take shape as a serene environment dedicated to meditation, mindfulness, and the preservation of nature. Envisioned as a quiet refuge for spiritual practice, Veluvan Meditation Park will feature forest pathways, silent meditation areas, and spaces that support inner stillness and a deeper connection with the Dhamma.</li>
-				</ul>
-			</p>
+            <h2>Our Architecture</h2>
+            <ul class="unstyled-list">
+                <li><strong>The Grand Stupa:</strong> A replica of the Great Stupa at Sanchi, serving as a beacon of faith. Unlike the Sanchi Stupa, it is hollow inside and contains two spacious meditation halls (2,700 sq ft each)—a perfect space for reflection, contemplation, and meditation.</li>
+                <li><strong>Meditation & Uposatha Halls:</strong> Spacious halls designed for collective meditation and monastic ceremonies.</li>
+                <li><strong>Bhikkhu & Sadhaka Niwas:</strong> Secluded residential quarters for monks and practitioners to live and meditate in peace.</li>
+                <li><strong>Administrative Building:</strong> The hub for managing monastery activities and course registrations.</li>
+                <li><strong>Gypsy Vipassana Center:</strong> Part of the 10-acre complex nearing completion. It will have 108 rooms and three large halls. 10-day Vipassana meditation courses will be offered soon, along with skill development, women’s empowerment, and cadre development programs.</li>
+                <li><strong>Veluvan Meditation Park:</strong> A sacred forest meditation space is currently being developed. Spread across approximately 100 acres of natural landscape, the park draws inspiration from the ancient Veluvana tradition—the bamboo groves offered to the Buddha for meditation—and embodies a commitment to simplicity, harmony, and contemplative living. Initiated under the guidance of Most Venerable Arayawangso Guruji, the project began with the planting of a Bodhi tree and continues to take shape as a serene environment dedicated to meditation, mindfulness, and the preservation of nature. Envisioned as a quiet refuge for spiritual practice, Veluvan Meditation Park will feature forest pathways, silent meditation areas, and spaces that support inner stillness and a deeper connection with the Dhamma.</li>
+            </ul>
 			<div class="gallery">
-                <img src="images/stupa.jpg" alt="Sanchi Style Stupa">
-                <img src="images/meditation-hall.jpg" alt="Meditation Hall">
+                <img src="images/stupa.jpg" alt="Sanchi Style Stupa" width="1000" height="750" loading="lazy" decoding="async">
+                <img src="images/meditation-hall.jpg" alt="Meditation Hall" width="1000" height="750" loading="lazy" decoding="async">
             </div>
         </div>
     </section>
@@ -92,16 +106,15 @@
         <div class="container">
             <h2>Meet the Monks</h2>
             <p>Most Venerable Arayawangso is a world-renowned meditation master and a senior figure in the Thai Forest Tradition. As the Abbot of both Buddhapojhariphunchai Monastery (Lamphun, Thailand) and Dhamma Vinaya Monastery (Pune, India), he serves as a spiritual bridge between the two nations.</p>
-			<p>Known for his strict adherence to monastic discipline and his expertise in deep meditation, "Guruji" has dedicated his life to reviving the Buddhist heritage of South Asia. His notable contributions include:
-				<ul style="list-style-type: none;">
-						<li><strong>Global Peace Ambassador:</strong> Leading "Bell of Peace" ceremonies across India and Pakistan to promote interfaith harmony.</li>
-						<li><strong>Dharma Education:</strong> Guiding international practitioners through intensive retreats and the study of the Pāli Canon.</li>
-						<li><strong>Cultural Diplomacy:</strong> Strengthening ties between Thailand and India through high-level Buddhist summits and Samvad initiatives.</li>
-				</ul>
-			</p>
+			<p>Known for his strict adherence to monastic discipline and his expertise in deep meditation, "Guruji" has dedicated his life to reviving the Buddhist heritage of South Asia. His notable contributions include:</p>
+            <ul class="unstyled-list">
+                <li><strong>Global Peace Ambassador:</strong> Leading "Bell of Peace" ceremonies across India and Pakistan to promote interfaith harmony.</li>
+                <li><strong>Dharma Education:</strong> Guiding international practitioners through intensive retreats and the study of the Pāli Canon.</li>
+                <li><strong>Cultural Diplomacy:</strong> Strengthening ties between Thailand and India through high-level Buddhist summits and Samvad initiatives.</li>
+            </ul>
 			<p>Under his guidance, Dhamma Vinaya Monastery Pune serves as a sanctuary for those seeking authentic Dhamma practice and mental peace in the modern world.</p>
             <div class="monk-image">
-                <img src="images/monks.jpg" alt="Monks in Meditation">
+                <img src="images/monks.jpg" alt="Monks in Meditation" width="1200" height="800" loading="lazy" decoding="async">
             </div>
         </div>
     </section>
@@ -124,7 +137,15 @@
 					<li>Respect the monks and their practices.</li>
 				</ul>
 			</div>
-			<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d60563.075943008545!2d73.6161125!3d18.4295784!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc297004cb4c7e3%3A0xfdf79b9844638e13!2sDVMP%20PROJECT!5e0!3m2!1sen!2sin!4v1773744362329!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="map-consent" data-map-consent>
+                <div class="map-consent__card">
+                    <p><strong>Location Google Map preview.</strong> Click to load map.</p>
+                    <button class="btn-primary map-consent__button" type="button" data-load-map>Load map</button>
+                </div>
+            </div>
+            <noscript>
+                <iframe class="map-embed" title="Map showing Dhamma Vinaya Monastery Pune" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d60563.075943008545!2d73.6161125!3d18.4295784!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc297004cb4c7e3%3A0xfdf79b9844638e13!2sDVMP%20PROJECT!5e0!3m2!1sen!2sin!4v1773744362329!5m2!1sen!2sin" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </noscript>
 		</div>
     </section>
 
@@ -166,7 +187,7 @@
         <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="donationModalTitle">
             <button type="button" class="modal__close" aria-label="Close" data-close-modal>×</button>
             <h3 id="donationModalTitle">Donate via QR</h3>
-            <img class="modal__image" src="images/payment.jpeg" alt="Donation payment QR code" loading="lazy" />
+            <img class="modal__image" src="images/payment.jpeg" alt="Donation payment QR code" loading="lazy" decoding="async" width="900" height="1200" />
 			<p></p>
 			<h3>Donate via Bank Transfer</h3>
             <p class="modal__text"><strong>Bank account details:</strong> Bank of Maharashtra</p>
@@ -185,7 +206,7 @@
     <footer>
         <div class="container">
             <p>Dhamma Vinaya Monastery Pune | Located in Agalambe, near Khadakwasla, Pune, India</p>
-            <p>Contact Us: [Phone Number] | [Email]</p>
+            <p>Contact Us: <a href="tel:+910000000000">[Phone Number]</a> | <a href="mailto:info@example.org">[Email]</a></p>
             <p>&copy; 2025 Dhamma Vinaya Monastery Pune. All rights reserved.</p>
         </div>
     </footer>
