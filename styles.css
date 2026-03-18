@@ -273,7 +273,7 @@ footer a:hover {
 /* Responsive Design */
 @media screen and (max-width: 768px) {
     html {
-        scroll-padding-top: 300px;
+        scroll-padding-top: 240px;
     }
 
     nav .container {
@@ -288,6 +288,8 @@ footer a:hover {
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        flex-direction: column;
+        margin-left: auto;
     }
 
     .nav-links {
