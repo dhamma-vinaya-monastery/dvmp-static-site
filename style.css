@@ -1,0 +1,191 @@
+:root {
+  --primary: #CC7722;
+  --secondary: #4B3621;
+  --accent: #228B22;
+  --bg: #fdfaf5;
+}
+
+/* GLOBAL REFINEMENT */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #fdfaf5;
+  color: #2c2c2c;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* TYPOGRAPHY */
+h1, h2, h3 {
+  font-family: Georgia, serif;
+  letter-spacing: -0.5px;
+}
+
+.section {
+  padding: 80px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* HERO SECTION (Carousel) */
+.hero {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Carousel images fill viewport */
+.hero-img {
+  height: 100vh;
+  width: 100%;
+  object-fit: cover; /* ensures images always cover the hero area */
+}
+
+/* Dark overlay for text readability */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Hero text container sits above images */
+.hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Ensure carousel arrows are on top of overlay and text */
+.carousel-control-prev,
+.carousel-control-next {
+  z-index: 3; /* higher than overlay (1) and text (2) */
+}
+
+/* Carousel arrows: default */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(255, 255, 255, 0.6); /* semi-transparent circle */
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  background-size: 100%, 100%;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect: brighten and slightly enlarge, keep circle */
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+  background-color: rgba(255, 255, 255, 0.9); /* brighter but still translucent */
+  transform: scale(1.1); /* subtle enlarge */
+}
+
+/* Responsive: mobile tweaks */
+@media (max-width: 768px) {
+  .hero-img {
+    object-fit: cover; /* fills screen, no black bars */
+    height: 100vh;
+    width: 100%;
+  }
+
+  .hero .container {
+    padding: 0 1rem; /* small horizontal padding for small screens */
+  }
+
+  .hero h1 {
+    font-size: 2rem; /* scale heading on mobile */
+  }
+
+  .hero p.lead {
+    font-size: 1rem; /* scale subtitle on mobile */
+  }
+
+  .btn {
+    font-size: 0.9rem; /* smaller button on mobile */
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* NAVBAR - transparent over hero */
+.navbar {
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.08); /* transparent over hero */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* NAVBAR AFTER SCROLL */
+.navbar.navbar-scrolled {
+  background-color: rgba(75, 54, 33, 0.9); /* solid brown */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* NAV LINKS */
+.navbar .nav-link {
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+/* CARDS */
+.program-card, .monk-card {
+  border: none;
+  transition: transform 0.3s;
+}
+
+/* EVENT CARDS */
+.event-card {
+  border: none;
+  border-radius: 12px;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-6px);
+}
+
+.program-card:hover, .monk-card:hover {
+  transform: translateY(-5px);
+}
+
+/* BUTTON */
+.btn-primary {
+  background: var(--primary);
+  border: none;
+}
+
+/* BUTTON POLISH */
+.btn-primary {
+  background: #CC7722;
+  padding: 10px 22px;
+  border-radius: 30px;
+}
+
+/* SECTION SPACING */
+.section {
+  padding: 100px 0;
+}
+
+/* MICRO-INTERACTIONS */
+a {
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* FOOTER */
+footer {
+  background: var(--secondary);
+}
+
+/* ACCESSIBILITY */
+:focus {
+  outline: 3px solid var(--accent);
+}
