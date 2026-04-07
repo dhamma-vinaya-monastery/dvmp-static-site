@@ -22,32 +22,34 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Example event data
-    const events = [
-        {
-            title: "Vesak Day Celebration",
-            date: "2025-05-30",
-            time: "10:00 AM",
-            description: "Join us for the celebration of Vesak, the birth, enlightenment, and death of the Buddha.",
-            expected: "Visitors are encouraged to participate in meditation and prayer.",
-            significance: "Vesak Day is a significant Buddhist festival that celebrates the life and teachings of the Buddha."
-        },
-        {
-            title: "Monthly Full Moon Ceremony",
-            date: "2025-06-02",
-            time: "6:00 PM",
-            description: "A special full moon ceremony to enhance meditation and mindfulness.",
-            expected: "Silent meditation and reflection are encouraged.",
-            significance: "The full moon holds great spiritual significance in Buddhism, marking key events in the Buddha’s life."
-        }
-    ];
-
-    const newsFeed = [
-        {
-            title: "Live Stream: Annual Buddha Jayanti",
-            content: "The Buddha Jayanti ceremony will be streamed live on our YouTube channel.",
-            link: "https://youtube.com/streamlink"
-        }
-    ];
+    // const events = [
+    //     {
+    //         title: "Vesak Day Celebration",
+    //         date: "2025-05-30",
+    //         time: "10:00 AM",
+    //         description: "Join us for the celebration of Vesak, the birth, enlightenment, and death of the Buddha.",
+    //         expected: "Visitors are encouraged to participate in meditation and prayer.",
+    //         significance: "Vesak Day is a significant Buddhist festival that celebrates the life and teachings of the Buddha."
+    //     },
+    //     {
+    //         title: "Monthly Full Moon Ceremony",
+    //         date: "2025-06-02",
+    //         time: "6:00 PM",
+    //         description: "A special full moon ceremony to enhance meditation and mindfulness.",
+    //         expected: "Silent meditation and reflection are encouraged.",
+    //         significance: "The full moon holds great spiritual significance in Buddhism, marking key events in the Buddha’s life."
+    //     }
+    // ];
+    const events = []; // Clear events to show "Coming soon" message
+    
+    // const newsFeed = [
+    //     {
+    //         title: "Live Stream: Annual Buddha Jayanti",
+    //         content: "The Buddha Jayanti ceremony will be streamed live on our YouTube channel.",
+    //         link: "https://youtube.com/streamlink"
+    //     }
+    // ];
+    const newsFeed = [];
 
     const eventList = document.getElementById("event-list");
     function appendLabeledText(container, label, value) {
@@ -59,45 +61,61 @@ document.addEventListener("DOMContentLoaded", function() {
         container.appendChild(p);
     }
 
-    events.forEach((event) => {
-        const eventDiv = document.createElement("div");
-        eventDiv.classList.add("event");
+    // Hide "Coming Soon" if events exist, otherwise show it
+    const noEventsMsg = document.getElementById("no-events-message");
 
-        const h3 = document.createElement("h3");
-        h3.textContent = event.title;
-        eventDiv.appendChild(h3);
+    if (events.length > 0) {
+        if (noEventsMsg) noEventsMsg.style.display = "none";
+        events.forEach((event) => {
+            const eventDiv = document.createElement("div");
+            eventDiv.classList.add("event");
 
-        appendLabeledText(eventDiv, "Time:", event.time);
-        appendLabeledText(eventDiv, "Date:", event.date);
-        appendLabeledText(eventDiv, "Description:", event.description);
-        appendLabeledText(eventDiv, "Expected from Visitors:", event.expected);
-        appendLabeledText(eventDiv, "Significance:", event.significance);
+            const h3 = document.createElement("h3");
+            h3.textContent = event.title;
+            eventDiv.appendChild(h3);
 
-        eventList.appendChild(eventDiv);
-    });
+            appendLabeledText(eventDiv, "Time:", event.time);
+            appendLabeledText(eventDiv, "Date:", event.date);
+            appendLabeledText(eventDiv, "Description:", event.description);
+            appendLabeledText(eventDiv, "Expected from Visitors:", event.expected);
+            appendLabeledText(eventDiv, "Significance:", event.significance);
+
+            eventList.appendChild(eventDiv);
+        });
+    } else {
+        if (noEventsMsg) noEventsMsg.style.display = "block";
+    }
 
     const newsFeedDiv = document.getElementById("news-feed");
-    newsFeed.forEach((newsItem) => {
-        const newsDiv = document.createElement("div");
-        newsDiv.classList.add("news-item");
+    const noNewsMsg = document.getElementById("no-news-message");
 
-        const h4 = document.createElement("h4");
-        h4.textContent = newsItem.title;
-        newsDiv.appendChild(h4);
+    if (newsFeed.length > 0) {
+        if (noNewsMsg) noNewsMsg.style.display = "none";
 
-        const p = document.createElement("p");
-        p.textContent = newsItem.content;
-        newsDiv.appendChild(p);
+        newsFeed.forEach((newsItem) => {
+            const newsDiv = document.createElement("div");
+            newsDiv.classList.add("news-item");
 
-        const a = document.createElement("a");
-        a.href = newsItem.link;
-        a.target = "_blank";
-        a.rel = "noopener noreferrer";
-        a.textContent = "Watch Live";
-        newsDiv.appendChild(a);
+            const h4 = document.createElement("h4");
+            h4.textContent = newsItem.title;
+            newsDiv.appendChild(h4);
 
-        newsFeedDiv.appendChild(newsDiv);
-    });
+            const p = document.createElement("p");
+            p.textContent = newsItem.content;
+            newsDiv.appendChild(p);
+
+            const a = document.createElement("a");
+            a.href = newsItem.link;
+            a.target = "_blank";
+            a.rel = "noopener noreferrer";
+            a.textContent = "Watch Live";
+            newsDiv.appendChild(a);
+
+            newsFeedDiv.appendChild(newsDiv);
+        });
+    } else {
+        if (noNewsMsg) noNewsMsg.style.display = "block";
+    }
 
     // Donation modal
     const donateNowBtn = document.getElementById("donateNowBtn");
@@ -193,5 +211,28 @@ document.addEventListener("DOMContentLoaded", function() {
                 first.focus();
             }
         }
+    });
+});
+
+document.querySelectorAll('.accordion-toggle').forEach(button => {
+    button.addEventListener('click', () => {
+        const content = button.nextElementSibling;
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+
+        button.setAttribute('aria-expanded', !expanded);
+        content.hidden = expanded;
+    });
+});
+
+document.querySelectorAll('.accordion-close').forEach(button => {
+    button.addEventListener('click', () => {
+        const content = button.closest('.accordion-content');
+        const toggle = content.previousElementSibling;
+
+        content.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+
+        // Optional: scroll back to the toggle button
+        toggle.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
 });

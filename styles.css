@@ -393,3 +393,68 @@ footer a:hover {
         animation: none !important;
     }
 }
+
+.guidelines {
+    margin-top: 20px;
+}
+
+.accordion-toggle {
+    width: 100%;
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    background: #f8f9f9;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    cursor: pointer;
+    color: #005f56;
+    transition: background 0.2s ease;
+}
+
+.accordion-toggle:hover {
+    background: rgba(0, 95, 86, 0.08);
+}
+
+.accordion-toggle[aria-expanded="true"] {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.accordion-content {
+    padding: 14px 18px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-top: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.accordion-content ul {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.accordion-content li + li {
+    margin-top: 8px;
+}
+
+.accordion-content h4 {
+    margin-top: 18px;
+    margin-bottom: 8px;
+    color: #005f56;
+    font-size: 1.05rem;
+}
+
+.accordion-close {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.accordion-close:hover {
+    background-color: #d5d5d5;
+}
+
+.accordion-close-wrapper {
+    margin-top: 20px;
+}
