@@ -1,17 +1,17 @@
-const events = [
-  {
-    "title": "One-Day Mindfulness Retreat",
-    "date": "2026-04-20",
-    "location": "DVMP, Agalambe",
-    "description": "Introductory retreat focusing on breath awareness and mindfulness."
-  },
-  {
-    "title": "Mega Dhamma Course",
-    "date": "2026-05-05",
-    "location": "Veluvan Meditation Park",
-    "description": "Residential immersive meditation retreat in Thai Forest tradition."
-  }
-];
+// const events = [
+//   {
+//     "title": "One-Day Mindfulness Retreat",
+//     "date": "2026-04-20",
+//     "location": "DVMP, Agalambe",
+//     "description": "Introductory retreat focusing on breath awareness and mindfulness."
+//   },
+//   {
+//     "title": "Mega Dhamma Course",
+//     "date": "2026-05-05",
+//     "location": "Veluvan Meditation Park",
+//     "description": "Residential immersive meditation retreat in Thai Forest tradition."
+//   }
+// ];
 
 // SMOOTH SCROLL
 document.querySelectorAll('a.nav-link').forEach(link => {
@@ -26,12 +26,19 @@ document.querySelectorAll('a.nav-link').forEach(link => {
 
 // LOAD EVENTS FROM JSON
 async function loadEvents() {
-  try {
-    // const res = await fetch('data/events.json'); // make sure path is correct
-    // const events = await res.json();
-    console.log("Loaded events:", events);
+  const container = document.getElementById('events-container');
 
-    const container = document.getElementById('events-container');
+  try {
+    const res = await fetch('data/events.json');
+    const events = await res.json();
+
+    // 👉 If no events, KEEP the HTML fallback
+    if (!events || events.length === 0) {
+      return;
+    }
+
+    // 👉 If events exist, CLEAR placeholder
+    container.innerHTML = "";
 
     events.forEach(event => {
       const col = document.createElement('div');
@@ -51,6 +58,7 @@ async function loadEvents() {
 
   } catch (err) {
     console.error("Events failed to load", err);
+    // 👉 Do nothing → fallback HTML stays visible
   }
 }
 

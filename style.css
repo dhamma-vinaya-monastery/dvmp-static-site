@@ -153,19 +153,6 @@ h1, h2, h3 {
   transform: translateY(-5px);
 }
 
-/* BUTTON */
-.btn-primary {
-  background: var(--primary);
-  border: none;
-}
-
-/* BUTTON POLISH */
-.btn-primary {
-  background: #CC7722;
-  padding: 10px 22px;
-  border-radius: 30px;
-}
-
 /* SECTION SPACING */
 .section {
   padding: 100px 0;
@@ -188,4 +175,61 @@ footer {
 /* ACCESSIBILITY */
 :focus {
   outline: 3px solid var(--accent);
+}
+
+/* Minimal theming for accordion (Visit section only) */
+#visit .accordion-button {
+  color: var(--secondary);
+}
+
+#visit .accordion-button:not(.collapsed) {
+  background-color: rgba(204, 119, 34, 0.1);
+  color: var(--secondary);
+  box-shadow: none;
+}
+
+#visit .accordion-button:focus {
+  box-shadow: none;
+}
+
+#visit h5 {
+  color: var(--secondary);
+}
+
+/* ============================= */
+/* PRIMARY BUTTON (FULL CONTROL) */
+/* ============================= */
+
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  border-radius: 30px;
+  padding: 10px 22px;
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.25s ease;
+}
+
+/* Hover */
+/* .btn-primary:hover {
+  background-color: #B8741E;
+  border-color: #B8741E;
+} */
+.btn-primary:hover {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+}
+
+/* Active / Pressed */
+.btn-primary:active,
+.btn-primary:focus:active {
+  background-color: #9F6118;
+  border-color: #9F6118;
+}
+
+/* Focus (no Bootstrap blue glow) */
+.btn-primary:focus,
+.btn-primary:focus-visible {
+  box-shadow: 0 0 0 0.2rem rgba(204, 119, 34, 0.25);
+  outline: none;
 }
