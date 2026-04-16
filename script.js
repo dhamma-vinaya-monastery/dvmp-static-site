@@ -32,15 +32,28 @@ async function loadEvents() {
     const res = await fetch('data/events.json');
     const events = await res.json();
 
-    // 👉 If no events, KEEP the HTML fallback
-    if (!events || events.length === 0) {
-      return;
-    }
+    if (!events || events.length === 0) return;
 
-    // 👉 If events exist, CLEAR placeholder
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // 👉 Filter only future events
+    const upcomingEvents = events.filter(event => {
+      return new Date(event.date) >= today;
+    });
+
+    // 👉 If no upcoming events → keep HTML fallback
+    if (upcomingEvents.length === 0) return;
+
+    // 👉 Sort by nearest date first
+    upcomingEvents.sort((a, b) => {
+      return new Date(a.date) - new Date(b.date);
+    });
+
+    // 👉 Remove placeholder
     container.innerHTML = "";
 
-    events.forEach(event => {
+    upcomingEvents.forEach(event => {
       const col = document.createElement('div');
       col.className = 'col-md-4';
 
@@ -58,7 +71,7 @@ async function loadEvents() {
 
   } catch (err) {
     console.error("Events failed to load", err);
-    // 👉 Do nothing → fallback HTML stays visible
+    // fallback HTML remains
   }
 }
 
