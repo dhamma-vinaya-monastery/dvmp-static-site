@@ -1,26 +1,37 @@
 :root {
   --primary: #CC7722;
   --secondary: #4B3621;
-  --accent: #228B22;
+
+  /* Accent = focus color (warm gold) */
+  --accent: #E6A85C;
+  --accent-rgb: 230, 168, 92;
+
   --bg: #fdfaf5;
+
+  --secondary-rgb: 75, 54, 33;
+
+  /* focus glow */
+  --focus-ring: rgba(var(--accent-rgb), 0.35);
 }
 
-/* GLOBAL REFINEMENT */
+/* =========================
+   GLOBAL BASE
+========================= */
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #fdfaf5;
+  background: var(--bg);
   color: #2c2c2c;
   -webkit-font-smoothing: antialiased;
 }
 
-/* TYPOGRAPHY */
 h1, h2, h3 {
   font-family: Georgia, serif;
   letter-spacing: -0.5px;
 }
 
 .section {
-  padding: 80px 0;
+  padding: 100px 0;
 }
 
 .section-title {
@@ -28,156 +39,156 @@ h1, h2, h3 {
   margin-bottom: 40px;
 }
 
-/* HERO SECTION (Carousel) */
+/* =========================
+   HERO
+========================= */
+
 .hero {
   height: 100vh;
   position: relative;
   overflow: hidden;
 }
 
-/* Carousel images fill viewport */
 .hero-img {
   height: 100vh;
   width: 100%;
-  object-fit: cover; /* ensures images always cover the hero area */
+  object-fit: cover;
 }
 
-/* Dark overlay for text readability */
 .hero-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(0,0,0,0.45);
-  pointer-events: none;
   z-index: 1;
+  pointer-events: none;
 }
 
-/* Hero text container sits above images */
 .hero .container {
   position: relative;
   z-index: 2;
 }
 
-/* Ensure carousel arrows are on top of overlay and text */
+/* carousel controls */
 .carousel-control-prev,
 .carousel-control-next {
-  z-index: 3; /* higher than overlay (1) and text (2) */
+  z-index: 3;
 }
 
-/* Carousel arrows: default */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  background-color: rgba(255, 255, 255, 0.6); /* semi-transparent circle */
+  background-color: rgba(255,255,255,0.6);
   border-radius: 50%;
   width: 45px;
   height: 45px;
-  background-size: 100%, 100%;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: 0.3s;
 }
 
-/* Hover effect: brighten and slightly enlarge, keep circle */
 .carousel-control-prev:hover .carousel-control-prev-icon,
 .carousel-control-next:hover .carousel-control-next-icon {
-  background-color: rgba(255, 255, 255, 0.9); /* brighter but still translucent */
-  transform: scale(1.1); /* subtle enlarge */
+  background-color: rgba(255,255,255,0.9);
+  transform: scale(1.1);
 }
 
-/* Responsive: mobile tweaks */
-@media (max-width: 768px) {
-  .hero-img {
-    object-fit: cover; /* fills screen, no black bars */
-    height: 100vh;
-    width: 100%;
-  }
+/* =========================
+   NAVBAR
+========================= */
 
-  .hero .container {
-    padding: 0 1rem; /* small horizontal padding for small screens */
-  }
-
-  .hero h1 {
-    font-size: 2rem; /* scale heading on mobile */
-  }
-
-  .hero p.lead {
-    font-size: 1rem; /* scale subtitle on mobile */
-  }
-
-  .btn {
-    font-size: 0.9rem; /* smaller button on mobile */
-    padding: 0.5rem 1rem;
-  }
-}
-
-/* NAVBAR - transparent over hero */
 .navbar {
   backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.08); /* transparent over hero */
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.08);
+  transition: 0.3s;
 }
 
-/* NAVBAR AFTER SCROLL */
 .navbar.navbar-scrolled {
-  background-color: rgba(75, 54, 33, 0.9); /* solid brown */
+  background-color: rgba(75, 54, 33, 0.9);
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
-/* NAV LINKS */
 .navbar .nav-link {
   color: #fff;
-  transition: color 0.3s ease;
 }
 
-/* CARDS */
-.program-card, .monk-card {
+/* =========================
+   CARDS
+========================= */
+
+.program-card,
+.monk-card {
   border: none;
   transition: transform 0.3s;
 }
 
-/* EVENT CARDS */
+.program-card:hover,
+.monk-card:hover {
+  transform: translateY(-5px);
+}
+
 .event-card {
   border: none;
   border-radius: 12px;
   padding: 20px;
   background: #fff;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
 .event-card:hover {
   transform: translateY(-6px);
 }
 
-.program-card:hover, .monk-card:hover {
-  transform: translateY(-5px);
+/* =========================
+   BUTTONS
+========================= */
+
+.btn-primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  border-radius: 30px;
+  padding: 10px 22px;
+  transition: 0.2s;
 }
 
-/* SECTION SPACING */
-.section {
-  padding: 100px 0;
+.btn-primary:hover {
+  background: var(--secondary);
+  border-color: var(--secondary);
 }
 
-/* MICRO-INTERACTIONS */
+/* remove ALL default focus visuals */
+.btn:focus,
+.btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* keyboard only */
+.btn:focus-visible {
+  box-shadow: 0 0 0 0.2rem var(--focus-ring);
+}
+
+/* =========================
+   LINKS / MICRO INTERACTION
+========================= */
+
 a {
-  transition: all 0.2s ease;
+  transition: 0.2s;
 }
 
 a:hover {
   opacity: 0.8;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
+
 footer {
   background: var(--secondary);
 }
 
-/* ACCESSIBILITY */
-:focus {
-  outline: 3px solid var(--accent);
-}
+/* =========================
+   ACCORDION
+========================= */
 
-/* Minimal theming for accordion (Visit section only) */
 #visit .accordion-button {
   color: var(--secondary);
 }
@@ -185,51 +196,192 @@ footer {
 #visit .accordion-button:not(.collapsed) {
   background-color: rgba(204, 119, 34, 0.1);
   color: var(--secondary);
-  box-shadow: none;
 }
 
 #visit .accordion-button:focus {
   box-shadow: none;
 }
 
-#visit h5 {
+/* =========================
+   NAV TABS
+========================= */
+
+.nav-tabs .nav-link {
   color: var(--secondary);
 }
 
-/* ============================= */
-/* PRIMARY BUTTON (FULL CONTROL) */
-/* ============================= */
-
-.btn-primary {
-  background-color: var(--primary);
-  border-color: var(--primary);
-  border-radius: 30px;
-  padding: 10px 22px;
-  transition: all 0.2s ease;
-  -webkit-tap-highlight-color: transparent;
-  transition: all 0.25s ease;
+.nav-tabs .nav-link:hover {
+  color: var(--primary);
 }
 
-/* Hover */
-/* .btn-primary:hover {
-  background-color: #B8741E;
-  border-color: #B8741E;
-} */
-.btn-primary:hover {
-  background-color: var(--secondary);
-  border-color: var(--secondary);
+.nav-tabs .nav-link.active {
+  color: var(--secondary);
+  background-color: rgba(204, 119, 34, 0.08);
+  border-color: var(--primary) var(--primary) #fff;
 }
 
-/* Active / Pressed */
-.btn-primary:active,
-.btn-primary:focus:active {
-  background-color: #9F6118;
-  border-color: #9F6118;
-}
-
-/* Focus (no Bootstrap blue glow) */
-.btn-primary:focus,
-.btn-primary:focus-visible {
-  box-shadow: 0 0 0 0.2rem rgba(204, 119, 34, 0.25);
+/* keyboard only */
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:active {
   outline: none;
+  box-shadow: none;
+}
+
+.nav-tabs .nav-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+/* =========================
+   DROPDOWN
+========================= */
+
+.dropdown-item:focus,
+.dropdown-item:active {
+  outline: none;
+  box-shadow: none;
+}
+
+.dropdown-item:focus-visible {
+  background-color: rgba(204, 119, 92, 0.18);
+  color: var(--secondary);
+}
+
+/* =========================
+   NAV FOCUS (IMPORTANT FIX)
+========================= */
+
+/* mouse click = nothing */
+.navbar .nav-link:focus,
+.navbar .nav-link:active {
+  outline: none;
+  box-shadow: none;
+}
+
+/* keyboard only (visible on dark navbar) */
+.navbar .nav-link:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* =========================
+   GLOBAL FOCUS SYSTEM
+========================= */
+
+/* remove click focus entirely */
+:focus:not(:focus-visible) {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* keyboard focus default */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* =========================
+   MODAL + SMALL UI
+========================= */
+
+.modal-body img {
+  max-width: 220px;
+}
+
+.copy-btn {
+  font-size: 0.8rem;
+  margin-left: 8px;
+}
+
+/* DVR anchor offset fix */
+#dvr-section {
+  padding-top: 120px;
+  margin-top: -120px;
+}
+
+/* mobile spacing fix */
+body {
+  padding-bottom: 70px;
+}
+
+/* =========================
+   FORCE REMOVE BOOTSTRAP BLUE STATES
+========================= */
+
+/* BUTTONS (mouse + keyboard) */
+.btn:focus,
+.btn:active,
+.btn:focus:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* force custom keyboard focus */
+.btn:focus-visible {
+  box-shadow: 0 0 0 0.2rem var(--focus-ring) !important;
+}
+
+/* DROPDOWN ITEMS (Dana submenu blue fix) */
+.dropdown-item:focus,
+.dropdown-item:active,
+.dropdown-item:focus:active {
+  background-color: rgba(204, 168, 92, 0.18) !important;
+  color: var(--secondary) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* NAV LINKS (remove blue flash) */
+.nav-link:focus,
+.nav-link:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* keyboard nav only */
+.navbar .nav-link:focus-visible {
+  outline: 2px solid #ffffff !important;
+  outline-offset: 3px;
+}
+
+/* ============================= */
+/* HARD RESET BOOTSTRAP BUTTON STATES */
+/* ============================= */
+
+.btn,
+.btn:focus,
+.btn:active,
+.btn:focus-visible,
+.btn-primary,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* NORMAL STATE */
+.btn-primary {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+
+/* HOVER */
+.btn-primary:hover {
+  background-color: var(--secondary) !important;
+  border-color: var(--secondary) !important;
+}
+
+/* ACTIVE (CLICK HOLD) */
+.btn-primary:active {
+  background-color: var(--secondary) !important;
+  border-color: var(--secondary) !important;
+}
+
+/* FOCUS (keyboard only styling — subtle but visible) */
+.btn:focus-visible,
+.btn-primary:focus-visible {
+  outline: 2px solid var(--accent) !important;
+  outline-offset: 2px;
+  box-shadow: none !important;
 }

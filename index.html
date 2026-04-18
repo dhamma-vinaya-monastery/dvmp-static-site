@@ -31,13 +31,34 @@
 
     <div class="collapse navbar-collapse" id="navMenu">
       <ul class="navbar-nav ms-auto">
-        <li><a class="nav-link" href="#">Home</a></li>
+        <li><a class="nav-link" href="#hero">Home</a></li>
         <li><a class="nav-link" href="#about">About</a></li>
         <li><a class="nav-link" href="#stupa">Stupa</a></li>
         <li><a class="nav-link" href="#monks">Monks</a></li>
         <li><a class="nav-link" href="#programs">Programs</a></li>
         <li><a class="nav-link" href="#events">Events</a></li>
-        <li><a class="nav-link" href="#support">Dana</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            Dana
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#donateModal">
+                Donate Now
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#support">
+                Importance of Dāna
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#dvr-section">
+                Dhamma Vinaya Ratna (DVR)
+              </a>
+            </li>
+          </ul>
+        </li>
         <li><a class="nav-link" href="#visit">Visit</a></li>
       </ul>
     </div>
@@ -46,7 +67,7 @@
 
 <header id="hero" class="hero position-relative">
 
-  <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
+  <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000" aria-label="Hero images">
 
     <!-- Slides -->
     <div class="carousel-inner">
@@ -57,7 +78,7 @@
         <img src="images/hero-2.webp" class="d-block w-100 hero-img" alt="Monastery Meditation Hall" loading="lazy">
       </div>
       <div class="carousel-item">
-        <img src="images/hero-4-16-9.webp" class="d-block w-100 hero-img" alt="Veluvan Meditation Park" loading="lazy">
+        <img src="images/hero-4.webp" class="d-block w-100 hero-img" alt="Veluvan Meditation Park" loading="lazy">
       </div>
     </div>
 
@@ -72,10 +93,10 @@
     </div>
 
     <!-- Carousel controls -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" aria-label="Previous slide">
       <span class="carousel-control-prev-icon"></span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" aria-label="Next slide">
       <span class="carousel-control-next-icon"></span>
     </button>
 
@@ -372,13 +393,122 @@ Cultural Diplomacy, strengthening ties between Thailand and India through high-l
 </section>
 
 <!-- SUPPORT -->
-<section id="support" class="section bg-light text-center">
+<section id="support" class="section bg-light">
   <div class="container">
-    <h2 class="section-title">Support the Sangha</h2>
-    <p>Join DVR (₹1000/month) to sustain Dhamma.</p>
 
-    <!-- Razorpay placeholder -->
-    <button class="btn btn-primary">Donate Now</button>
+    <h2 class="section-title text-center">Support the Sangha</h2>
+
+    <!-- TOP CTA -->
+    <div class="text-center mb-4">
+      <p>Your generosity sustains the living practice of Dhamma and the monastic community.</p>
+      <button class="btn btn-primary btn-lg"
+              data-bs-toggle="modal"
+              data-bs-target="#donateModal">
+        Donate Now
+      </button>
+    </div>
+
+    <!-- DANA -->
+    <div id="dana-section" class="mt-5 text-center">
+      <h5 class="fw-semibold mb-3">The Practice of Dāna</h5>
+
+      <p>
+        In the teachings of the Buddha, <em>dāna</em> (generosity) is the foundation of spiritual practice.
+        Through giving, one cultivates compassion, reduces attachment, and supports the continuation
+        of the Dhamma in the world.
+      </p>
+
+      <p>
+        This monastery is sustained entirely through the voluntary contributions of practitioners
+        and well-wishers. Your support helps maintain the Sangha and preserve the teachings.
+      </p>
+
+      <button class="btn btn-primary mt-2"
+              data-bs-toggle="modal"
+              data-bs-target="#donateModal">
+        Offer Dāna
+      </button>
+    </div>
+
+    <!-- DVR -->
+    <div id="dvr-section" class="mt-5">
+      <div class="card border-0 shadow-sm p-4 text-center">
+        <h5 class="fw-semibold mb-3">Dhamma Vinaya Ratna (DVR)</h5>
+
+        <p>
+          Individuals who contribute ₹1000 per month are honored as
+          <strong>Dhamma Vinaya Ratna (DVR)</strong> — supporters who help sustain
+          the Dhamma for future generations.
+        </p>
+
+        <p>
+          Many devotees choose to offer one DVR per family member,
+          dedicating merit for their well-being and spiritual growth.
+        </p>
+
+        <p class="fw-semibold">
+          “Sabba-dānaṃ Dhamma-dānaṃ jināti”
+        </p>
+
+        <div class="mt-2">
+          <button class="btn btn-primary btn-sm"
+                  data-bs-toggle="modal"
+                  data-bs-target="#donateModal">
+            Become a DVR (₹1000/month)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DVR LIST -->
+    <div class="mt-5 text-center">
+      <h5 class="fw-semibold mb-3">Dhamma Vinaya Ratna Supporters</h5>
+
+      <div id="dvr-container" class="row g-3"></div>
+
+      <div class="mt-3">
+        <a href="dvr.html" class="btn btn-outline-secondary btn-sm">
+          View Full List
+        </a>
+      </div>
+    </div>
+
+    <!-- VOLUNTEER (hidden for now) -->
+    <div class="mt-5 text-center d-none" id="volunteer-section">
+      <h5 class="fw-semibold mb-3">Offer Your Time</h5>
+      <p>
+        Beyond financial support, volunteering is a meaningful way to contribute.
+        We will contact you when opportunities arise.
+      </p>
+
+      <a href="#" class="btn btn-outline-secondary">
+        Volunteer with Us
+      </a>
+    </div>
+
+    <!-- TAX -->
+    <div class="mt-5">
+      <div class="bg-light p-3 rounded small text-center">
+
+        <p class="mb-2">
+          Donations are eligible for tax exemption under Section 80G.
+        </p>
+
+        <p class="mb-2">
+          Bahujan Hitay Samajik Bandhilki Sanstha (BHSBS), Pune has obtained 80G exemption
+          vide Income Tax Dept. Pune’s letter
+          PN/CIT/(empt)/Tech/80G/431/2016-17/6168 Dt. 6/1/2017.
+        </p>
+
+        <p class="mb-0">
+          To receive a receipt, please share your payment confirmation,
+          full name, address, contact number, and PAN details at
+          <strong>info@dvmp.in</strong>.
+        </p>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -495,5 +625,111 @@ Cultural Diplomacy, strengthening ties between Thailand and India through high-l
         crossorigin="anonymous"></script>
 
 <script src="script.js"></script>
+
+<div class="modal fade" id="donateModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <div>
+          <h5 class="modal-title fw-semibold mb-1">Make a Donation</h5>
+          <p class="small text-muted mb-0">
+            Support the Sangha and the continuation of Dhamma
+          </p>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="px-2">
+          <div class="small text-muted mb-3">
+            <strong>Tax & Receipt:</strong><br>
+            Donations are eligible for 80G tax exemption.<br>
+            Please share payment confirmation, Name, Address, Contact Number and PAN at:
+            <br>
+            <a href="mailto:info@dvmp.in">info@dvmp.in</a>
+          </div>
+          <hr>
+          <!-- Tabs -->
+          <ul class="nav nav-tabs mb-3" id="donateTabs">
+            <li class="nav-item">
+              <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#upi">
+                UPI
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#bank">
+                Bank Transfer
+              </button>
+            </li>
+          </ul>
+
+          <div class="tab-content text-center">
+
+            <!-- UPI -->
+            <div class="tab-pane fade show active" id="upi">
+              <!-- <img src="images/payment.jpeg" class="img-fluid w-75 w-md-50 mb-3" alt="QR Code"> -->
+              <div class="text-center">
+                    <!-- Export PNG image with 1000px+ and keep square format and then use <img src="images/payment.png"      class="img-fluid mb-3"      alt="QR Code"> -->
+                    <img src="images/payment.jpeg"
+                      class="img-fluid mb-3"
+                      alt="Donation QR code"
+                      loading="lazy"
+                      decoding="async"
+                      width="900"
+                      height="1200"
+                      style="width: 100%; max-width: 360px; height: auto;">
+              </div>
+              <p class="small mb-2">
+                Scan QR code to donate instantly.
+              </p>
+              <button class="btn btn-outline-secondary btn-sm copy-btn"
+                      data-copy="hitay.28821@mahb">
+                Copy UPI ID
+              </button>
+
+            </div>
+
+            <!-- BANK -->
+            <div class="tab-pane fade" id="bank">
+
+              <div class="text-start small lh-sm">
+
+                <p class="mb-1"><strong>Bank:</strong> Bank of Maharashtra</p>
+
+                <p class="mb-1"><strong>Account Name:</strong> Bahujan Hitay Samajik Bandhilki Sanstha</p>
+
+                <p class="mb-1"><strong>Account No:</strong> 60234928821</p>
+
+                <p class="mb-1"><strong>IFSC:</strong> MAHB0001431</p>
+
+                <p class="mb-1"><strong>MICR:</strong> 411014052</p>
+
+                <p class="mb-1"><strong>PAN:</strong> AACTB6420H</p>
+
+              </div>
+<p class="small text-muted mt-3">
+  For <Strong>Dhamma Vinaya Ratna (DVR)</Strong>, please set up standing instruction with your bank
+  to contribute monthly.
+</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Mobile sticky button -->
+<div class="d-lg-none fixed-bottom p-2 bg-light border-top">
+  <button class="btn btn-primary w-100"
+          data-bs-toggle="modal"
+          data-bs-target="#donateModal">
+    Donate Now
+  </button>
+</div>
+
 </body>
 </html>
