@@ -212,27 +212,27 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     });
-});
-
-document.querySelectorAll('.accordion-toggle').forEach(button => {
+    
+    document.querySelectorAll('.accordion-toggle').forEach(button => {
     button.addEventListener('click', () => {
         const content = button.nextElementSibling;
         const expanded = button.getAttribute('aria-expanded') === 'true';
 
         button.setAttribute('aria-expanded', !expanded);
         content.hidden = expanded;
+        });
     });
-});
 
-document.querySelectorAll('.accordion-close').forEach(button => {
-    button.addEventListener('click', () => {
-        const content = button.closest('.accordion-content');
-        const toggle = content.previousElementSibling;
+    document.querySelectorAll('.accordion-close').forEach(button => {
+        button.addEventListener('click', () => {
+            const content = button.closest('.accordion-content');
+            const toggle = content.previousElementSibling;
 
-        content.hidden = true;
-        toggle.setAttribute('aria-expanded', 'false');
+            content.hidden = true;
+            toggle.setAttribute('aria-expanded', 'false');
 
-        // Optional: scroll back to the toggle button
-        toggle.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // Optional: scroll back to the toggle button
+            toggle.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
     });
 });
